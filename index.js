@@ -61,7 +61,7 @@ bot.on("message", async message => {
 		let cmd = bot.commands.get("Reload");
 		cmd.run(bot,message,args);
 		var timer = setInterval (function (){
-			let prefix = botconfig.prefix;
+			let prefix = "!";
 			let messageArray = message.content.split(" ");
 			let command = messageArray[0];
 			let args = messageArray.slice(1);
@@ -82,4 +82,4 @@ bot.on("message", async message => {
 
 
 
-bot.login(botconfig.token);
+bot.login(proccess.env.BOT_TOKEN);
