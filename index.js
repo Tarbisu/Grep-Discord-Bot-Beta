@@ -1,4 +1,3 @@
-const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const snekfetch = require("snekfetch");
 const fs = require("fs");
@@ -82,4 +81,4 @@ bot.on("message", async message => {
 
 
 
-bot.login(proccess.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
