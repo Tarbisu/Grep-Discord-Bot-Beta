@@ -43,6 +43,7 @@ function numberNotate(num) {
 	}
 		test = getSecondPart(test);
 		// defining arrays used for sifting through data
+		test = test.replace("?", "%3F");
 
 		playerDetails = [];
 		playerFight = [];
