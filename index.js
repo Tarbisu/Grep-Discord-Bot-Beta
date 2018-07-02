@@ -1,4 +1,3 @@
-const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const snekfetch = require("snekfetch");
 const fs = require("fs");
