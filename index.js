@@ -70,7 +70,7 @@ bot.on("message", async message => {
 		}, 3600000);
 	}
 
-	let prefix = botconfig.prefix;
+	let prefix = "!";
 	let messageArray = message.content.split(" ");
 	let command = messageArray[0];
 	let args = messageArray.slice(1);
