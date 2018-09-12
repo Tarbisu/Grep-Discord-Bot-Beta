@@ -1,6 +1,12 @@
 const Discord = require("discord.js");
 const snekfetch = require("snekfetch");
 const followData = require("./Follow.js");
+const fs = require("fs");
+
+
+// let followDataF = JSON.parse(fs.readFileSync("./followDataF.json", "utf8"));
+
+
 
 function csvToArray (data) {
 rows = data.split("\n");
@@ -9,24 +15,7 @@ return row.split(",");
 	});
 };
 
-function difference(a,b ){
-	a = parseInt(a);
-	b = parseInt(b);
-	var c = a - b;
-	if (c < 0){
-		return c;
-	}
-	if (c > 0){
-		return "+" + c;
-	}
-	if (c === 0){
-		return "Equivalent: " + b;
-	}
-}
-
-			var counter = 0;
 	module.exports.run = async(bot, message, args) => {
-		counter++;
 		let test = message.content.split(" ");
 
 		if (test.length < 2){
@@ -99,14 +88,103 @@ function difference(a,b ){
 	module.exports.allianceDefData = {allianceDefData}
 	module.exports.allianceAttData = {allianceAttData}
 
-	// pData();
-	// gData(townData, islandData, conquestData, playerData, playerFightData, playerDefData, playerAttData, allianceData, allianceDefData, allianceAttData);
-
 	msg.delete();
 	message.guild.channels.find("name", "bot-updates").send("Re-Loaded Data!");
+
+
+		for (var i = 0; i < followData.followedPlayers.followedPlayers.length; i++) {
+			var curPlayer = followData.followedPlayers.followedPlayers[i];
+			var pData = getPlayerData(curPlayer, playerData, playerDefData, playerAttData, playerFightData);
+			playerPointQueue = [];
+			playerFightQueue = [];
+			playerAttQueue = [];
+			playerDefQueue = [];
+			playerCityQueue = [];
+			playerData = [];
+	//
+	// 		if (!followDataF[curPlayer]) followDataF[curPlayer] = {
+	// 			points: pData[0][3],
+	// 			fPoints: pData[3][2],
+	// 			aPoints: pData[2][2],
+	// 			dPoints: pData[1][2],
+	// 			cities: pData[0][5]
+	// 		}
+	//
+	// 		fs.writeFile("./followDataF.json", JSON.stringify(followDataF), (err) => {
+  //   if (err) console.error(err)
+  // });
+
+
+
+
+		}
+
+
 	}
 }
 
+
+
 module.exports.help = {
   name: "Reload"
+}
+
+function getPlayerData(pName, playerData, playerDefData, playerAttData, playerFightData){
+	var found = false;
+	pData = [];
+	for (var i = 0; i < playerData.length; i++) {
+		if (pName == playerData[i][1]) {
+			found = true;
+			pData.push(playerData[i]);
+		}
+	}
+	if (found == false) {
+		return "unknown player";
+	}
+	for (var i = 0; i < playerDefData.length; i++) {
+		if(pData[0][0] == playerDefData[i][1]){
+			pData.push(playerDefData[i]);
+		}
+	}
+	for (var i = 0; i < playerAttData.length; i++) {
+		if(pData[0][0] == playerAttData[i][1]){
+			pData.push(playerAttData[i]);
+		}
+	}
+	for (var i = 0; i < playerFightData.length; i++) {
+		if(pData[0][0] == playerFightData[i][1]){
+			pData.push(playerFightData[i]);
+		}
+	}
+	return pData;
+}
+
+function getAllianceData(aName, allianceData, allianceDefData, allianceAttData, playerFightData){
+	var found = false;
+	aData = [];
+	for (var i = 0; i < allianceData.length; i++) {
+		if (aName == allianceData[i][1]) {
+			found = true;
+			aData.push(allianceData[i]);
+		}
+	}
+	if (found == false) {
+		return "unknown player";
+	}
+	for (var i = 0; i < allianceDefData.length; i++) {
+		if(aData[0][0] == allianceDefData[i][1]){
+			aData.push(allianceDefData[i]);
+		}
+	}
+	for (var i = 0; i < allianceAttData.length; i++) {
+		if(aData[0][0] == allianceAttData[i][1]){
+			aData.push(allianceAttData[i]);
+		}
+	}
+	for (var i = 0; i < allianceFightData.length; i++) {
+		if(aData[0][0] == allianceFightData[i][1]){
+			aData.push(allianceFightData[i]);
+		}
+	}
+	return aData;
 }

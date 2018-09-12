@@ -32,6 +32,17 @@ function difference(a,b ){
 
 }
 
+function numberNotate(num) {
+    var str = num.toString().split('.');
+    if (str[0].length >= 5) {
+        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (str[1] && str[1].length >= 5) {
+        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+    }
+    return str.join('.');
+}
+
 	module.exports.run = async(bot, message, args) => {
 		let pData = Data.playerData;
 		playerData = pData.playerData;
@@ -75,6 +86,7 @@ function difference(a,b ){
 
 		console.log(first[0][1]);
 	for (var i = 1; i < (first[0][1] + 1); i++) {
+		test[i] = test[i].replace("?", "%3F");
 
 		for (var j = 0; j < playerData.length; j++) {
 			if(test[i] === playerData[j][1]){
@@ -137,6 +149,7 @@ function difference(a,b ){
 var counter = parseInt(second[0][0]);
 
 	for (var i = counter; i < counter + (second[0][1] - counter); i++) {
+		test[i] = test[i].replace("?", "%3F");
 		for (var j = 0; j < playerData.length; j++) {
 			if(test[i] === playerData[j][1]){
 				secondplayerDetails.push(playerData[j]);
@@ -207,35 +220,35 @@ var counter = parseInt(second[0][0]);
 			description: firstplayerNames + " vs " + secondplayerNames,
 	     fields: [{
 				 name: "Points",
-				 value: firstPoints,
+				 value: numberNotate(firstPoints),
 				 "inline": true
 			 },{
 				 name: "Points",
-				 value: secondPoints,
+				 value: numberNotate(secondPoints),
 				 "inline": true
 			 },{
 				 name: "Difference",
-				 value: difference(firstPoints, secondPoints),
+				 value: numberNotate(difference(firstPoints, secondPoints)),
 				 "inline": true
 			 },{
 				 name: "Fighting Points",
-				 value: "Fighting: " + firstFight + "bp\nAttacking: " + firstAtt + "bp\nDefending: " + firstDef + "bp",
+				 value: "Fighting: " + numberNotate(firstFight) + "bp\nAttacking: " + numberNotate(firstAtt) + "bp\nDefending: " + numberNotate(firstDef) + "bp",
 				 "inline": true
 			 },{
 				 name: "Fighting Points",
-				 value: "Fighting: " + secondFight + "bp\nAttacking: " + secondAtt + "bp\nDefending: " + secondDef + "bp",
+				 value: "Fighting: " + numberNotate(secondFight) + "bp\nAttacking: " + numberNotate(secondAtt) + "bp\nDefending: " + numberNotate(secondDef) + "bp",
 				 "inline": true
 			 },{
 				 name: "Difference",
-				 value: difference(firstFight, secondFight) + "bp\n" + difference(firstAtt, secondAtt) + "bp\n" + difference(firstDef, secondDef) + "bp",
+				 value: numberNotate(difference(firstFight, secondFight)) + "bp\n" + numberNotate(difference(firstAtt, secondAtt)) + "bp\n" + numberNotate(difference(firstDef, secondDef)) + "bp",
 				 "inline": true
 			 },{
 				 name: "Cities",
-				 value: firstCities,
+				 value: numberNotate(firstCities),
 				 "inline": true
 			 },{
 				 name: "Cities",
-				 value: secondCities,
+				 value: numberNotate(secondCities),
 				 "inline": true
 			 },{
 				 name: "Difference",

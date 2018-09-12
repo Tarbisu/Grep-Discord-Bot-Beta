@@ -42,8 +42,9 @@ function numberNotate(num) {
     return str.split(' ')[1];
 	}
 		test = getSecondPart(test);
-		// defining arrays used for sifting through data
 		test = test.replace("?", "%3F");
+
+		// defining arrays used for sifting through data
 
 		playerDetails = [];
 		playerFight = [];

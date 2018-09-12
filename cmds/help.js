@@ -19,10 +19,10 @@ module.exports.run = async(bot, message, args) => {
              name: "Without Input", value: "!T12PlayerData\n!T12AllianceData\n!Conquests"
            },
            {
-               name: "With Input", value: "!PlayerData {name of player}\n!AllianceData {name of alliance} \n!GhostFinder {city ID} \n!MoraleCalc {attackerName} {defenderName}\n!TownInfo {id}\n!MoraleCalcA {attackingAllianceName} {defenderName}\n!IslandInfo {id}\n"
+               name: "With Input", value: "!PlayerData {name of player}\n!AllianceData {name of alliance} \n!GhostFinder {city ID} \n!MoraleCalc {attackerName} {defenderName}\n!TownInfo {id}\n!MoraleCalcA {attackingAllianceName} {defenderName}\n!IslandInfo {id}\n!CompareA {alliance alliance2 alliance3... etc} vs {alliance alliance2 alliance3...}\n!CompareP {player player2 player3... etc} vs {player player2 player3...}\n!Conquests {Player/Alliance} {Name} {id}"
              },
              {
-                 name: "To Be Done", value: "!Follow {alliance/player, name} {name}\n!RemoveFollow {alliance/player} {name}\n!Territories\n!Territory {Ocean}\n!CompareA {alliance, alliance2, alliance3... etc} vs {alliance, alliance2, alliance3}\n!CompareP {player, player2, player3... etc} vs {player, player2, player3}"
+                 name: "To Be Done", value: "!Follow {alliance/player, name} {name}\n!RemoveFollow {alliance/player} {name}\n!Territories\n!Territory {Ocean}\nAutofilling Inputs"
                },{
                  name: "Utility", value: "!Math, operational signs are, +, -, *, /, %, ^, =?\n!Setup {worldID}"
                }

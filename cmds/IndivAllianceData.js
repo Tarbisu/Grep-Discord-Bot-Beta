@@ -66,6 +66,8 @@ function returnUnique(array){
     return str.split(' ')[1];
 	}
 		test = getSecondPart(test);
+		test = test.replace("?", "%3F");
+
 		// defining arrays used for sifting through data
 
 		allianceDetails = [];

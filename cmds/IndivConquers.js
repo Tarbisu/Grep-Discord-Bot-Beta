@@ -230,7 +230,6 @@ module.exports.run = async(bot, message, args) => {
 				// 		 },],
 				//  } });
 				message.channel.send("***-*** " + conquestArray[i].townId + " with the points: " + conquestArray[i].points + ", taken by: " + conquestArray[i].takenBy + " belonging to the alliance: " + conquestArray[i].takenByA);
-
 			}
 		}
 	}
