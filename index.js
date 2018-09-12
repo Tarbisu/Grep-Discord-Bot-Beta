@@ -52,7 +52,7 @@ bot.on("message", async message => {
 	if(message.author.bot) return;
 	if(message.channel.type === "dm") return;
 	if (message.content.split(" ")[0] === "!Setup"){
-		let prefix = botconfig.prefix;
+		let prefix = "!";
 		let messageArray = message.content.split(" ");
 		let command = messageArray[0];
 		let args = messageArray.slice(1);
@@ -70,7 +70,7 @@ bot.on("message", async message => {
 		}, 3600000);
 	}
 
-	let prefix = botconfig.prefix;
+	let prefix = "!";
 	let messageArray = message.content.split(" ");
 	let command = messageArray[0];
 	let args = messageArray.slice(1);
@@ -78,6 +78,10 @@ bot.on("message", async message => {
 	let cmd = bot.commands.get(command.slice(prefix.length));
 	if(cmd){cmd.run(bot,message,args);}
 });
+
+		var timer = setInterval (function (){
+			console.log("ping");
+		}, 3600000/4);
 
 
 
